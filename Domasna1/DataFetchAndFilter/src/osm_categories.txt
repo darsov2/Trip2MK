@@ -1,0 +1,13 @@
+entertainment.culture
+entertainment.museum
+heritage
+heritage.unesco
+national_park
+tourism.information
+tourism.attraction.artwork
+tourism.attraction.viewpoint
+tourism.attraction.fountain
+tourism.attraction.clock
+tourism.sights
+religion.place_of_worship
+building.tourism
