@@ -22,6 +22,7 @@ public class Gradovi {
     @JoinColumn(name = "regionId", foreignKey = @ForeignKey(name= "fk_gradovi_regioni"))
     private Regioni region;
 
+
     public Gradovi(String ime, String opis, Regioni region) {
         this.ime = ime;
         this.opis = opis;

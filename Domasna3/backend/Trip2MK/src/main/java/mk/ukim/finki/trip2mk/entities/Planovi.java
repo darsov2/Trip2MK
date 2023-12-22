@@ -15,13 +15,16 @@ public class Planovi {
     private boolean ekskurzija;
     private String ime;
     private int brDenovi;
+    @ManyToOne
+    @JoinColumn(name = "gradId", foreignKey=@ForeignKey(name = "fk_planovi_grad"))
+    private Gradovi grad;
     @ManyToMany
     @JoinTable(name = "planovi_stavki",
             joinColumns = @JoinColumn(name = "znamenitostId", foreignKey = @ForeignKey(name = "fk_planovi_planovi_stavki")),
             inverseJoinColumns = @JoinColumn(name = "planId", foreignKey = @ForeignKey(name = "fk_planovi_stavki_planovi")))
     private List<Znamenitosti> znamenitosti;
 
-    public Planovi(boolean ekskurzija, String ime, int brDenovi) {
+    public Planovi(boolean ekskurzija, String ime, int brDenovi, Gradovi grad) {
         this.ekskurzija = ekskurzija;
         this.brDenovi = brDenovi;
         this.ime = ime;
