@@ -20,11 +20,12 @@ public class Znamenitosti {
     private String osmId;
     private Double latitude;
     private Double longtitude;
+    private String adresa;
     @ManyToOne
     @JoinColumn(name = "tipZnamenitostId", foreignKey = @ForeignKey(name = "fk_znamenitosti_tip_znamenitosti"))
     private TipoviZnamenitosti tipZnamenitost;
 
-    public Znamenitosti(Regioni region, Gradovi grad, String opis, String wikiData, String osmId, Double latitude, Double longtitude, TipoviZnamenitosti tipZnamenitost) {
+    public Znamenitosti(Regioni region, Gradovi grad, String opis, String wikiData, String osmId, Double latitude, Double longtitude, TipoviZnamenitosti tipZnamenitost, String adresa) {
         this.region = region;
         this.grad = grad;
         this.opis = opis;
@@ -33,6 +34,7 @@ public class Znamenitosti {
         this.latitude = latitude;
         this.longtitude = longtitude;
         this.tipZnamenitost = tipZnamenitost;
+        this.adresa = adresa;
     }
 
     public Znamenitosti() {
