@@ -17,24 +17,17 @@ public class MislenjaDaoImp implements MislenjaDao {
     @PersistenceContext
     EntityManager em;
     @Override
-    public void kreirajMislenje(int ocenka, String opis, Znamenitosti znamenitost, Korisnici korisnik) {
-        Mislenja mislenje = new Mislenja(ocenka, opis, znamenitost, korisnik);
+    public void create(Mislenja mislenje) {
         em.persist(mislenje);
     }
 
     @Override
-    public void izbrisiMislenje(long id) {
-        Mislenja mislenje = findById(id);
+    public void delete(Mislenja mislenje) {
         em.remove(mislenje);
     }
 
     @Override
-    public void azurirajMislenje(long id, int ocenka, String opis, Znamenitosti znamenitost, Korisnici korisnik) {
-        Mislenja mislenje = findById(id);
-        mislenje.setOcenka(ocenka);
-        mislenje.setOpis(opis);
-        mislenje.setZnamenitost(znamenitost);
-        mislenje.setKorisnik(korisnik);
+    public void save(Mislenja mislenje) {
         em.persist(mislenje);
     }
 
@@ -44,7 +37,7 @@ public class MislenjaDaoImp implements MislenjaDao {
     }
 
     @Override
-    public List<Mislenja> najdiGiSite() {
+    public List<Mislenja> findAll() {
         return em.createQuery("SELECT m FROM Mislenja m ORDER BY mislenjeId").getResultList();
     }
 }

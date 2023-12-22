@@ -14,21 +14,17 @@ public class PlanoviDaoImpl implements PlanoviDao {
     @PersistenceContext
     EntityManager em;
     @Override
-    public void kreirajPlan() { //todo pa dali treba vaka???? OOOOO TIIIII
-        Planovi plan = new Planovi();
+    public void create(Planovi plan) {
         em.persist(plan);
     }
 
     @Override
-    public void izbrisiPlan(long id) {
-        Planovi plan = findById(id);
+    public void delete(Planovi plan) {
         em.remove(plan);
     }
 
     @Override
-    public void azurirajPlan(long id) {
-        Planovi plan = findById(id);
-        //todo planovi azuriranje
+    public void save(Planovi plan) {
         em.persist(plan);
     }
 
@@ -38,7 +34,7 @@ public class PlanoviDaoImpl implements PlanoviDao {
     }
 
     @Override
-    public List<Planovi> najdiGiSite() {
+    public List<Planovi> findAll() {
         return em.createQuery("SELECT p FROM Planovi p ORDER BY planId").getResultList();
     }
 }

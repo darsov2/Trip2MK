@@ -14,26 +14,17 @@ public class KorisniciDaoImpl implements KorisniciDao {
     @PersistenceContext
     EntityManager em;
     @Override
-    public void kreirajKorisnik(String username, String password, String ime, String prezime, String telefonskiBroj, String email) {
-        Korisnici korisnik = new Korisnici(username, password, ime, prezime, telefonskiBroj, email);
+    public void create(Korisnici korisnik) {
         em.persist(korisnik);
     }
 
     @Override
-    public void izbrisiKorisnik(long id) {
-        Korisnici korisnik = findById(id);
+    public void delete(Korisnici korisnik) {
         em.remove(korisnik);
     }
 
     @Override
-    public void azurirajKorisnik(long id, String username, String password, String ime, String prezime, String telefonskiBroj, String email) {
-        Korisnici korisnik = findById(id);
-        korisnik.setUsername(username);
-        korisnik.setPassword(password);
-        korisnik.setIme(ime);
-        korisnik.setPrezime(prezime);
-        korisnik.setTelefonskiBroj(telefonskiBroj);
-        korisnik.setEmail(email);
+    public void save(Korisnici korisnik) {
         em.persist(korisnik);
     }
 
@@ -43,7 +34,7 @@ public class KorisniciDaoImpl implements KorisniciDao {
     }
 
     @Override
-    public List<Korisnici> najdiGiSite() {
+    public List<Korisnici> findAll() {
         return em.createQuery("SELECT k FROM Korisnici k ORDER BY korisnikId").getResultList();
     }
 }
