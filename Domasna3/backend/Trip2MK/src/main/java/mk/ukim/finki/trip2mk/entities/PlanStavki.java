@@ -16,6 +16,7 @@ public class PlanStavki {
     private int redenBroj;
     @Temporal(TemporalType.TIME)
     private Date cas;
+    private int den;
 
     public PlanStavki(Znamenitosti znamenitost, int redenBroj, Date cas) {
         this.znamenitost = znamenitost;
