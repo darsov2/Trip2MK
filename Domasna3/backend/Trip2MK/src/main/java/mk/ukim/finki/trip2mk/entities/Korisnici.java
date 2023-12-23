@@ -3,11 +3,17 @@ package mk.ukim.finki.trip2mk.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Entity
 @Data
-public class Korisnici { //todo userDetails extends;
+@Table(name = "users")
+public class Korisnici  { //todo userDetails extends;
     @Id
     @GeneratedValue
     private long korisnikId;
@@ -17,6 +23,7 @@ public class Korisnici { //todo userDetails extends;
     private String prezime;
     private String telefonskiBroj;
     private String email;
+    private String uloga;
 
     public Korisnici(String username, String password, String ime, String prezime, String telefonskiBroj, String email) {
         this.username = username;
@@ -29,4 +36,5 @@ public class Korisnici { //todo userDetails extends;
 
     public Korisnici() {
     }
+
 }

@@ -27,6 +27,7 @@ public class Gradovi {
         this.ime = ime;
         this.opis = opis;
         this.region = region;
+
         this.znamenitosti = new ArrayList<>();
     }
 

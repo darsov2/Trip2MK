@@ -17,6 +17,9 @@ public class PlanStavki {
     @Temporal(TemporalType.TIME)
     private Date cas;
     private int den;
+    @ManyToOne
+    @JoinColumn(name = "plan_id", foreignKey = @ForeignKey(name = "fk_planstavka_plan"))
+    private Planovi plan;
 
     public PlanStavki(Znamenitosti znamenitost, int redenBroj, Date cas) {
         this.znamenitost = znamenitost;
