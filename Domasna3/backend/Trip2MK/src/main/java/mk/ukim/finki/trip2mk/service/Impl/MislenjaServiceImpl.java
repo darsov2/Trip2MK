@@ -47,4 +47,9 @@ public class MislenjaServiceImpl implements MislenjaService {
     public List<Mislenja> findAll() {
         return null;
     }
+
+    @Override
+    public List<Mislenja> findByCityId(Long id) {
+        return mislenjaDao.findByCityId(id);
+    }
 }

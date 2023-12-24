@@ -2,10 +2,7 @@ package mk.ukim.finki.trip2mk.controller;
 
 import mk.ukim.finki.trip2mk.entities.Znamenitosti;
 import mk.ukim.finki.trip2mk.service.ZnamenitostiService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +21,11 @@ public class ZnamenitostiController {
     {
         return znamenitostiService.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Znamenitosti getZnamenitostById(@PathVariable Long id)
+    {
+        return znamenitostiService.findById(id);
+    }
+
 }

@@ -1,7 +1,10 @@
 package mk.ukim.finki.trip2mk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -13,6 +16,7 @@ public class Znamenitosti {
     @JoinColumn(name = "regionId", foreignKey = @ForeignKey(name = "fk_znamenitosti_regioni"))
     private Regioni region;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "gradId", foreignKey = @ForeignKey(name = "fk_znamenitosti_gradovi"))
     private Gradovi grad;
     private String opis;
@@ -24,6 +28,8 @@ public class Znamenitosti {
     @ManyToOne
     @JoinColumn(name = "tipZnamenitostId", foreignKey = @ForeignKey(name = "fk_znamenitosti_tip_znamenitosti"))
     private TipoviZnamenitosti tipZnamenitost;
+    @OneToMany(mappedBy = "znamenitost")
+    private List<ZnamenitostiSliki> sliki;
 
     public Znamenitosti(Regioni region, Gradovi grad, String opis, String wikiData, String osmId, Double latitude, Double longtitude, TipoviZnamenitosti tipZnamenitost) {
         this.region = region;

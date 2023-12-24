@@ -1,5 +1,6 @@
 package mk.ukim.finki.trip2mk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class Planovi {
     private int brDenovi;
     @ManyToOne
     @JoinColumn(name = "gradId", foreignKey=@ForeignKey(name = "fk_planovi_grad"))
+    @JsonIgnore
     private Gradovi grad;
     @OneToMany(mappedBy = "plan")
     private List<PlanStavki> znamenitosti;

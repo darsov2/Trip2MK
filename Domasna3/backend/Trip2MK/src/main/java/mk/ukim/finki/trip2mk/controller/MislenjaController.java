@@ -18,6 +18,7 @@ public class MislenjaController {
     private final KorisniciService korisniciService;
     private final ZnamenitostiService znamenitostiService;
 
+
     public MislenjaController(MislenjaService mislenjaService, KorisniciService korisniciService, ZnamenitostiService znamenitostiService) {
         this.mislenjaService = mislenjaService;
         this.korisniciService = korisniciService;
@@ -25,25 +26,30 @@ public class MislenjaController {
     }
 
     @GetMapping
-    List<Mislenja> getReviews(){
+    List<Mislenja> getReviews() {
         return mislenjaService.findAll();
     }
 
     @GetMapping("/find/{id}")
-    Mislenja getReviewForUser(@PathVariable Long id){
+    Mislenja getReviewForUser(@PathVariable Long id) {
         return mislenjaService.findById(id);
     }
 
+    @GetMapping("/find/city/{id}")
+    List<Mislenja> getReviewsForCity(@PathVariable Long id){
+        return mislenjaService.findByCityId(id);
+    }
+
     @GetMapping("/remove/{id}")
-    void deleteReviewForUser(@PathVariable Long id){
+    void deleteReviewForUser(@PathVariable Long id) {
         mislenjaService.delete(id);
     }
 
     @PostMapping("/create")
     void create(@RequestParam int ocenka,
-                    @RequestParam String opis,
-                    @RequestParam long znamenitostId,
-                    @RequestParam long korisnikId){
+                @RequestParam String opis,
+                @RequestParam long znamenitostId,
+                @RequestParam long korisnikId) {
 
         Znamenitosti znamenitost = znamenitostiService.findById(znamenitostId);
         Korisnici korisnik = korisniciService.findById(korisnikId);

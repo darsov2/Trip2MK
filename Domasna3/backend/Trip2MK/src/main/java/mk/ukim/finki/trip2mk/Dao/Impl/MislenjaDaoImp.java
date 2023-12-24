@@ -3,6 +3,7 @@ package mk.ukim.finki.trip2mk.Dao.Impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import mk.ukim.finki.trip2mk.Dao.MislenjaDao;
 import mk.ukim.finki.trip2mk.entities.Korisnici;
 import mk.ukim.finki.trip2mk.entities.Mislenja;
@@ -17,6 +18,7 @@ public class MislenjaDaoImp implements MislenjaDao {
     @PersistenceContext
     EntityManager em;
     @Override
+    @Transactional
     public void create(Mislenja mislenje) {
         em.persist(mislenje);
     }
@@ -39,5 +41,10 @@ public class MislenjaDaoImp implements MislenjaDao {
     @Override
     public List<Mislenja> findAll() {
         return em.createQuery("SELECT m FROM Mislenja m ORDER BY mislenjeId").getResultList();
+    }
+
+    @Override
+    public List<Mislenja> findByCityId(Long id) {
+        return em.createQuery("select m from Mislenja m where m.znamenitost.id = :id").setParameter("id", id).getResultList();
     }
 }

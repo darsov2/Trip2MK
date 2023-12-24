@@ -15,12 +15,17 @@ public class Gradovi {
     private long gradId;
     private String ime;
     private String opis;
-    @OneToMany
-    @JoinColumn(name = "znamenitostId", foreignKey = @ForeignKey(name = "fk_gradovi_znamenitosti"))
+    @OneToMany(mappedBy = "grad")
     private List<Znamenitosti> znamenitosti;
     @ManyToOne
     @JoinColumn(name = "regionId", foreignKey = @ForeignKey(name= "fk_gradovi_regioni"))
     private Regioni region;
+    @OneToMany(mappedBy = "grad")
+    private List<GradoviSliki> sliki;
+    private String latitude;
+    private String longitude;
+    @OneToMany(mappedBy = "grad")
+    private List<Planovi> planovi;
 
 
     public Gradovi(String ime, String opis, Regioni region) {
