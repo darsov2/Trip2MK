@@ -37,7 +37,7 @@ public class PlanoviController {
     void createPlan(@RequestParam boolean ekskurzija,
                        @RequestParam String ime,
                        @RequestParam int brDenovi){
-        planoviService.create(ekskurzija, ime, brDenovi);
+        planoviService.create(ekskurzija, ime, brDenovi, null);
     }
 
 }

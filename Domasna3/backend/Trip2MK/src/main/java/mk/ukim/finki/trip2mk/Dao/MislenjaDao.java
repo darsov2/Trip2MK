@@ -13,5 +13,6 @@ public interface MislenjaDao {
 
     Mislenja findById(long id);
     List<Mislenja> findAll();
+    List<Mislenja> findByCityId(Long id);
 
 }

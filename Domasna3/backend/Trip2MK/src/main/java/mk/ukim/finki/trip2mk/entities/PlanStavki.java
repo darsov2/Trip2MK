@@ -1,5 +1,6 @@
 package mk.ukim.finki.trip2mk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
@@ -17,6 +18,10 @@ public class PlanStavki {
     @Temporal(TemporalType.TIME)
     private Date cas;
     private int den;
+    @ManyToOne
+    @JoinColumn(name = "plan_id", foreignKey = @ForeignKey(name = "fk_planstavka_plan"))
+    @JsonIgnore
+    private Planovi plan;
 
     public PlanStavki(Znamenitosti znamenitost, int redenBroj, Date cas) {
         this.znamenitost = znamenitost;
