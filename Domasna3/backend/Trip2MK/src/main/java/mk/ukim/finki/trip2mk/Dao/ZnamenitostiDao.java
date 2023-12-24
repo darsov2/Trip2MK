@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ZnamenitostiDao {
     List<Znamenitosti> findAll();
+
+    Znamenitosti findById(long znamenitostId);
 }
