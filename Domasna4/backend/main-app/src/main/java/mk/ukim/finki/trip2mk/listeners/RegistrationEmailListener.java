@@ -2,6 +2,7 @@ package mk.ukim.finki.trip2mk.listeners;
 
 import mk.ukim.finki.trip2mk.entities.Korisnici;
 import mk.ukim.finki.trip2mk.event.OnRegistrationSuccessEvent;
+import mk.ukim.finki.trip2mk.factories.RestEmailServiceFactory;
 import mk.ukim.finki.trip2mk.service.KorisniciService;
 import mk.ukim.finki.trip2mk.service.RestEmailServiceCommunication;
 import org.springframework.context.ApplicationListener;
@@ -15,10 +16,10 @@ public class RegistrationEmailListener implements ApplicationListener<OnRegistra
     private final Environment environment;
     private final RestEmailServiceCommunication restEmailServiceCommunication;
 
-    public RegistrationEmailListener(KorisniciService korisniciService, Environment environment, RestEmailServiceCommunication restEmailServiceCommunication) {
+    public RegistrationEmailListener(KorisniciService korisniciService, Environment environment) {
         this.korisniciService = korisniciService;
         this.environment = environment;
-        this.restEmailServiceCommunication = restEmailServiceCommunication;
+        this.restEmailServiceCommunication = RestEmailServiceFactory.createInstance();
     }
 
     @Override
